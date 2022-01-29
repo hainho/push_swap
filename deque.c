@@ -40,6 +40,7 @@ t_node	*pop_back(t_deque *deque)
 		return (NULL);
 	if (back = pop_back(deque->tail) == NULL)
 		return (NULL);
+	(deque->length)--;
 	return (back);
 }
 
@@ -51,5 +52,6 @@ t_node	*pop_front(t_deque *deque)
 		return (NULL);
 	if (front = pop_front(deque->head) == NULL)
 		return (NULL);
+	(deque->length)--;
 	return (front);
 }
