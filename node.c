@@ -1,60 +1,82 @@
-#include "push_swap.h"
+#include "pushswap.h"
 
-struct s_node  *new_node()
+t_node	*new_node()
 {
-    struct s_node   *node;
+	t_node	*node;
 
-    if (node = malloc(sizeof(struct s_node)) == NULL)
-        return (NULL);
-    node->bn = NULL;
-    node->next = NULL;
-    node->prev = NULL;
-    node->value = 0;
-    return (node);
+	if (node = malloc(sizeof(t_node)) == NULL)
+		return (NULL);
+	node->bn = NULL;
+	node->next = NULL;
+	node->prev = NULL;
+	node->value = 0;
+	return (node);
 }
 
-int push_back(struct s_node *tail, struct s_node *node)
+int	push_back(t_node *tail, t_node *node)
 {
-    struct s_node   *back;
+	t_node	*back;
 
-    if (tail == NULL || node == NULL)
-        return (-1);
-    back = tail->prev;
-    if (back == NULL)
-        return (-1);
-    back->next = node;
-    node->prev = back;
-    tail->prev = node;
-    node->next = tail;
-    return (0);
+	if (tail == NULL || node == NULL)
+		return (-1);
+	back = tail->prev;
+	if (back == NULL)
+		return (-1);
+	back->next = node;
+	node->prev = back;
+	tail->prev = node;
+	node->next = tail;
+	return (0);
 }
 
-int push_front(struct s_node *head, struct s_node *node)
+int	push_front(t_node *head, t_node *node)
 {
-    struct s_node   *front;
+	t_node	*front;
 
-    if (head == NULL || node == NULL)
-        return (-1);
-    front = head->next;
-    if (front == NULL)
-        return (-1);
-    front->prev = node;
-    node->next = front;
-    head->next = node;
-    node->prev = head;
-    return (0);
+	if (head == NULL || node == NULL)
+		return (-1);
+	front = head->next;
+	if (front == NULL)
+		return (-1);
+	front->prev = node;
+	node->next = front;
+	head->next = node;
+	node->prev = head;
+	return (0);
 }
 
-struct s_node   *pop_front(struct s_node *head)
+t_node	*pop_front(t_node *head)
 {
-    if (head == NULL)
-        return (NULL);
-    return (head->next);    
+	t_node	*front;
+	t_node	*temp;
+
+	if (head == NULL)
+		return (NULL);
+	if (head->next == NULL)
+		return (NULL);
+	front = head->next;
+	temp = front->next;
+	if (temp == NULL)
+		return (NULL);
+	head->next = temp;
+	temp->prev = head;
+	return (front);    
 }
 
-struct s_node   *pop_back(struct s_node *tail)
+t_node	*pop_back(t_node *tail)
 {
-    if (tail == NULL)
-        return (NULL);
-    return (tail->prev);    
+	t_node	*back;
+	t_node	*temp;
+
+	if (tail == NULL)
+		return (NULL);
+	if (tail->prev == NULL)
+		return (NULL);
+	back = tail->prev;
+	temp = back->prev;
+	if (temp == NULL)
+		return (NULL);
+	tail->prev = temp;
+	temp->next = tail;
+	return (back);   
 }
