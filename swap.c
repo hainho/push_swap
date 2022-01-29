@@ -23,12 +23,14 @@ static void	swap(t_deque *deque)
 void	sa(t_pushswap *ps)
 {
 	swap(ps->a);
+	write(1, "sa\n", 3);
 	return;
 }
 
 void	sb(t_pushswap *ps)
 {
 	swap(ps->b);
+	write(1, "sb\n", 3);
 	return;
 }
 
@@ -36,5 +38,6 @@ void	ss(t_pushswap *ps)
 {
 	swap(ps->a);
 	swap(ps->b);
+	write(1, "ss\n", 3);
 	return;
 }

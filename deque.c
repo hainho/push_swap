@@ -4,11 +4,11 @@ t_deque	*new_deque()
 {
 	t_deque	*deque;
 
-	if (deque = malloc(sizeof(t_deque)) == NULL)
+	if ((deque = malloc(sizeof(t_deque))) == NULL)
 		return (NULL);
-	if (deque->head = new_node() == NULL)
+	if ((deque->head = new_node()) == NULL)
 		return (NULL);
-	if (deque->tail = new_node() == NULL)
+	if ((deque->tail = new_node()) == NULL)
 		return (NULL);
 	deque->head->next = deque->tail;
 	deque->tail->prev = deque->head;
@@ -38,7 +38,7 @@ t_node	*pop_back(t_deque *deque)
 
 	if (deque->length == 0)
 		return (NULL);
-	if (back = pop_back(deque->tail) == NULL)
+	if ((back = node_pop_back(deque->tail)) == NULL)
 		return (NULL);
 	(deque->length)--;
 	return (back);
@@ -50,7 +50,7 @@ t_node	*pop_front(t_deque *deque)
 
 	if (deque->length == 0)
 		return (NULL);
-	if (front = pop_front(deque->head) == NULL)
+	if ((front = node_pop_front(deque->head)) == NULL)
 		return (NULL);
 	(deque->length)--;
 	return (front);

@@ -6,7 +6,7 @@ static void	reverse_rotate(t_deque *deque)
 
 	if (deque->length == 0)
 		return;
-	if (node = pop_back(deque) == NULL)
+	if ((node = pop_back(deque)) == NULL)
 		return;
 	if (push_front(deque, node) == -1)
 		return;
@@ -16,18 +16,21 @@ static void	reverse_rotate(t_deque *deque)
 void	rra(t_pushswap *ps)
 {
 	reverse_rotate(ps->a);
+	write(1, "rra\n", 4);
 	return;
 }
 
 void	rrb(t_pushswap *ps)
 {
 	reverse_rotate(ps->b);
+	write(1, "rrb\n", 4);
 	return;
 }
 
 void	rrr(t_pushswap *ps)
 {
-	rra(ps);
-	rrb(ps);
+	reverse_rotate(ps->a);
+	reverse_rotate(ps->b);
+	write(1, "rrr\n", 4);
 	return;
 }

@@ -1,6 +1,6 @@
 #include "pushswap.h"
 
-static int	binary_length(int size)
+static void	binary_length(t_pushswap *ps, int size)
 {
 	int	count;
 	
@@ -10,7 +10,8 @@ static int	binary_length(int size)
 		size /= 2;
 		count++;
 	}
-	return (count);
+	ps->length = count;
+	return;
 }
 
 static int set_bn(t_node *node, int n, int length)
@@ -18,7 +19,7 @@ static int set_bn(t_node *node, int n, int length)
 	int temp;
 	int ptr;
 	
-	if (node->bn = malloc(sizeof(char) * (length + 1)) == NULL)
+	if ((node->bn = malloc(sizeof(char) * (length + 1))) == NULL)
 		return (-1);
 	node->bn[length] = 0;
 	temp = 1;
@@ -36,16 +37,15 @@ static int set_bn(t_node *node, int n, int length)
 	return (0);
 }
 
-static int	set_binary(t_node **list, int size)
+static int	set_binary(t_pushswap *ps, t_node **list, int size)
 {
 	int	count;
-	int length;
 
 	count = 0;
-	length = binary_length(size);
+	binary_length(ps, size);
 	while (count < size)
 	{
-		if (set_bn(list[count], count, length) == -1)
+		if (set_bn(list[count], count, ps->length) == -1)
 			return (-1);
 		count++;
 	}
@@ -85,20 +85,20 @@ int	parsing(t_pushswap *ps, int argc, char **argv)
 	int		n;
 
 	ptr = 1;
-	if (list = malloc(sizeof(t_node) * (argc - 1)) == NULL)
+	if ((list = malloc(sizeof(t_node) * (argc - 1))) == NULL)
 	while (ptr < argc)
 	{
 		n = ft_atoi(argv[ptr++]);
-		if (node = malloc(sizeof(t_node)) == NULL)
+		if ((node = malloc(sizeof(t_node))) == NULL)
 			return (-1);
 		node->value = n;
-		if (push_back(ps->a, node) == -1);
+		if (push_back(ps->a, node) == -1)
 			return (-1);
 		list[ptr-2] = node;
 		(ps->size)++;
 	}
 	sort(list, ps->size);
-	if (set_binary(list, ps->size) == -1)
+	if (set_binary(ps, list, ps->size) == -1)
 	{
 		free(list);
 		return (-1);

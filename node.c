@@ -4,7 +4,7 @@ t_node	*new_node()
 {
 	t_node	*node;
 
-	if (node = malloc(sizeof(t_node)) == NULL)
+	if ((node = malloc(sizeof(t_node))) == NULL)
 		return (NULL);
 	node->bn = NULL;
 	node->next = NULL;

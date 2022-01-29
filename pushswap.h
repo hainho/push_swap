@@ -25,6 +25,8 @@ typedef struct s_pushswap
 	t_deque	*a;
 	t_deque	*b;
 	int		size;
+	int		count;
+	int 	length;
 }	t_pushswap;
 
 
@@ -59,5 +61,6 @@ void	rrr(t_pushswap *ps);
 
 int	ft_atoi(const char *str);
 int	parsing(t_pushswap *ps, int argc, char **argv);
+void	redix_all(t_pushswap *ps);
 
 #endif
