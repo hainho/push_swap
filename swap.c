@@ -1,13 +1,13 @@
 #include "pushswap.h"
 
-int	swap(t_deque *deque)
+static void	swap(t_deque *deque)
 {
 	t_node	*temp1;
 	t_node	*temp2;
 	t_node	*temp3;
 
 	if (deque->length < 2)
-		return (-1);
+		return;
 	temp1 = deque->head->next;
 	temp2 = temp1->next;
 	temp3 = temp2->next;
@@ -17,44 +17,24 @@ int	swap(t_deque *deque)
 	deque->head->next = temp2;
 	temp1->prev = temp2;
 	temp2->next = temp1;
-	return (0);
+	return;
 }
 
-int	push(t_deque *src, t_deque *dst)
+void	sa(t_pushswap *ps)
 {
-	t_node	*node;
-
-	if (src->length == 0)
-		return (-1);
-	if (node = pop_front(src) == NULL)
-		return (-1);
-	if (push_front(dst, node) == -1)
-		return (-1);
-	return (0);
+	swap(ps->a);
+	return;
 }
 
-int	rotate(t_deque *deque)
+void	sb(t_pushswap *ps)
 {
-	t_node	*node;
-
-	if (deque->length == 0)
-		return (-1);
-	if (node = pop_front(deque) == NULL)
-		return (-1);
-	if (push_back(deque, node) == -1)
-		return (-1);
-	return (0);
+	swap(ps->b);
+	return;
 }
 
-int	reverse_rotate(t_deque *deque)
+void	ss(t_pushswap *ps)
 {
-	t_node	*node;
-
-	if (deque->length == 0)
-		return (-1);
-	if (node = pop_back(deque) == NULL)
-		return (-1);
-	if (push_front(deque, node) == -1)
-		return (-1);
-	return (0);
+	swap(ps->a);
+	swap(ps->b);
+	return;
 }
