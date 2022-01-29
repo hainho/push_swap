@@ -3,6 +3,7 @@
 
 # include <unistd.h>
 # include <stdlib.h>
+# include <limits.h>
 
 typedef struct	s_node
 {
@@ -55,5 +56,8 @@ void	rr(t_pushswap *ps);
 void	rra(t_pushswap *ps);
 void	rrb(t_pushswap *ps);
 void	rrr(t_pushswap *ps);
+
+int	ft_atoi(const char *str);
+int	parsing(t_pushswap *ps, int argc, char **argv);
 
 #endif
