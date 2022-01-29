@@ -13,7 +13,7 @@ t_node	*new_node()
 	return (node);
 }
 
-int	push_back(t_node *tail, t_node *node)
+int	node_push_back(t_node *tail, t_node *node)
 {
 	t_node	*back;
 
@@ -29,7 +29,7 @@ int	push_back(t_node *tail, t_node *node)
 	return (0);
 }
 
-int	push_front(t_node *head, t_node *node)
+int	node_push_front(t_node *head, t_node *node)
 {
 	t_node	*front;
 
@@ -45,7 +45,7 @@ int	push_front(t_node *head, t_node *node)
 	return (0);
 }
 
-t_node	*pop_front(t_node *head)
+t_node	*node_pop_front(t_node *head)
 {
 	t_node	*front;
 	t_node	*temp;
@@ -63,7 +63,7 @@ t_node	*pop_front(t_node *head)
 	return (front);    
 }
 
-t_node	*pop_back(t_node *tail)
+t_node	*node_pop_back(t_node *tail)
 {
 	t_node	*back;
 	t_node	*temp;
