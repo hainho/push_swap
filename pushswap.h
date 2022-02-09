@@ -4,12 +4,12 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <limits.h>
-
+# include <stdio.h>
 typedef struct	s_node
 {
 	struct s_node	*next;
 	struct s_node	*prev;
-	char			*bn;
+	int				bn;
 	int				value;
 }	t_node;
 

@@ -8,8 +8,11 @@ static void	push(t_deque *src, t_deque *dst)
 		return;
 	if ((node = pop_front(src)) == NULL)
 		return;
+	printf("pop front end\n");
 	if (push_front(dst, node) == -1)
 		return;
+	printf("push front end\n");
+
 	return;
 }
 

@@ -11,31 +11,41 @@ static void	binary_length(t_pushswap *ps, int size)
 		count++;
 	}
 	ps->length = count;
+	printf("length : %d\n", count);
 	return;
 }
 
-static int set_bn(t_node *node, int n, int length)
-{
-	int temp;
-	int ptr;
+// static int set_bn(t_node *node, int n, int length)
+// {
+// 	int temp;
+// 	int ptr;
 	
-	if ((node->bn = malloc(sizeof(char) * (length + 1))) == NULL)
-		return (-1);
-	node->bn[length] = 0;
-	temp = 1;
-	while (--length)
-		temp *= 2;
-	ptr = 0;
-	while (temp > 0)
-	{
-		if (n / temp > 0)
-			node->bn[ptr] = '1';
-		else
-			node->bn[ptr] = '0';
-		n %= temp;
-	}
-	return (0);
-}
+// 	if ((node->bn = malloc(sizeof(char) * (length + 1))) == NULL)
+// 		return (-1);
+// 	node->bn[length] = 0;
+// 	printf("length : %d\n", length);
+// 	temp = 1;
+// 	while (--length)
+// 		temp *= 2;
+// 	printf("temp : %d\n", temp);
+
+// 	ptr = 0;
+// 	while (temp > 0)
+// 	{
+// 		if (n / temp > 0)
+// 			node->bn[ptr] = '1';
+// 		else
+// 			node->bn[ptr] = '0';
+// 		n %= temp;
+// 		temp /= 2;
+// 		ptr++;
+// 		printf("temp : %d\n", temp);
+// 	}
+// 		printf("set_bn : %s\n", node->bn);
+	
+
+// 	return (0);
+// }
 
 static int	set_binary(t_pushswap *ps, t_node **list, int size)
 {
@@ -45,10 +55,10 @@ static int	set_binary(t_pushswap *ps, t_node **list, int size)
 	binary_length(ps, size);
 	while (count < size)
 	{
-		if (set_bn(list[count], count, ps->length) == -1)
-			return (-1);
+		list[count]->bn = count;
 		count++;
 	}
+	printf("set binary end");
 	return (0);
 }
 
@@ -86,6 +96,7 @@ int	parsing(t_pushswap *ps, int argc, char **argv)
 
 	ptr = 1;
 	if ((list = malloc(sizeof(t_node) * (argc - 1))) == NULL)
+		return (-1);
 	while (ptr < argc)
 	{
 		n = ft_atoi(argv[ptr++]);
@@ -98,10 +109,12 @@ int	parsing(t_pushswap *ps, int argc, char **argv)
 		(ps->size)++;
 	}
 	sort(list, ps->size);
+	printf("sort end\n");
 	if (set_binary(ps, list, ps->size) == -1)
 	{
 		free(list);
 		return (-1);
 	}
+	free(list);
 	return (0);
 }

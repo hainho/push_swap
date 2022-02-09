@@ -26,6 +26,7 @@ int	push_back(t_deque *deque, t_node *node)
 
 int	push_front(t_deque *deque, t_node *node)
 {
+	printf("pushfront start");
 	if (node_push_front(deque->head, node) == -1)
 		return (-1);
 	(deque->length)++;
