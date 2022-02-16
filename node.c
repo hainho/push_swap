@@ -1,10 +1,11 @@
 #include "pushswap.h"
 
-t_node	*new_node()
+t_node	*new_node(void)
 {
 	t_node	*node;
 
-	if ((node = malloc(sizeof(t_node))) == NULL)
+	node = malloc(sizeof(t_node));
+	if (node == NULL)
 		return (NULL);
 	node->bn = 0;
 	node->next = NULL;
@@ -60,7 +61,7 @@ t_node	*node_pop_front(t_node *head)
 		return (NULL);
 	head->next = temp;
 	temp->prev = head;
-	return (front);    
+	return (front);
 }
 
 t_node	*node_pop_back(t_node *tail)
@@ -78,5 +79,5 @@ t_node	*node_pop_back(t_node *tail)
 		return (NULL);
 	tail->prev = temp;
 	temp->next = tail;
-	return (back);   
+	return (back);
 }

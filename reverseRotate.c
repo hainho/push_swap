@@ -11,7 +11,7 @@ static void	reverse_rotate(t_deque *deque)
 		return ;
 	if (push_front(deque, node) == -1)
 		return ;
-	return;
+	return ;
 }
 
 void	rra(t_pushswap *ps)

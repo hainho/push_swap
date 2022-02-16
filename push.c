@@ -11,7 +11,7 @@ static void	push(t_deque *src, t_deque *dst)
 		return ;
 	if (push_front(dst, node) == -1)
 		return ;
-	return;
+	return ;
 }
 
 void	pa(t_pushswap *ps)

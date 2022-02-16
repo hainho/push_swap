@@ -31,8 +31,8 @@ void	print_a(t_pushswap *ps)
 
 void	print_b(t_pushswap *ps)
 {
-	t_node* node;
-	
+	t_node	*node;
+
 	node = ps->b->head->next;
 	while (node->next != NULL)
 		node = node->next;
