@@ -58,7 +58,7 @@ static int	set_binary(t_pushswap *ps, t_node **list, int size)
 		list[count]->bn = count;
 		count++;
 	}
-	printf("set binary end");
+	printf("set binary end\n");
 	return (0);
 }
 

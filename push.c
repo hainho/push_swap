@@ -7,10 +7,16 @@ static void	push(t_deque *src, t_deque *dst)
 	if (src->length == 0)
 		return;
 	if ((node = pop_front(src)) == NULL)
+	{
+		printf("return null\n");
 		return;
+	}
 	printf("pop front end\n");
 	if (push_front(dst, node) == -1)
+	{
+		printf("return -1\n");
 		return;
+	}
 	printf("push front end\n");
 
 	return;
