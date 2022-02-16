@@ -1,25 +1,19 @@
 #include "pushswap.h"
 
-static void	binary_length(t_pushswap *ps, int size)
-{
-	int	count;
-	
-	count = 0;
-	while (size > 0)
-	{
-		size /= 2;
-		count++;
-	}
-	ps->length = count;
-	return;
-}
-
 static int	set_binary(t_pushswap *ps, t_node **list, int size)
 {
 	int	count;
+	int	temp;
 
+	count = 0;	
+	temp = size;
+	while (temp > 0)
+	{
+		temp /= 2;
+		count++;
+	}
+	ps->length = count;
 	count = 0;
-	binary_length(ps, size);
 	while (count < size)
 	{
 		list[count]->bn = count;
@@ -80,20 +74,11 @@ static int set_node(t_pushswap *ps, char* c)
 	return (0);
 }
 
-int	parsing(t_pushswap *ps, int argc, char **argv)
+static int binary_parsing(t_pushswap *ps, t_node **list)
 {
 	t_node	*cur;
-	t_node	**list;
 	int		ptr;
 
-	ptr = 1;
-	while (ptr < argc)
-	{
-		if ((set_node(ps, argv[ptr++])) == -1)
-			return (-1);
-	}
-	if ((list = malloc(sizeof(t_node) * (ps->size))) == NULL)
-		return (-1);
 	ptr = 0;
 	cur = ps->a->head->next;
 	while(ptr < ps->size)
@@ -109,4 +94,20 @@ int	parsing(t_pushswap *ps, int argc, char **argv)
 	}
 	free(list);
 	return (0);
+}
+
+int	parsing(t_pushswap *ps, int argc, char **argv)
+{
+	t_node	**list;
+	int		ptr;
+
+	ptr = 1;
+	while (ptr < argc)
+	{
+		if ((set_node(ps, argv[ptr++])) == -1)
+			return (-1);
+	}
+	if ((list = malloc(sizeof(t_node) * (ps->size))) == NULL)
+		return (-1);
+	return (binary_parsing(ps, list));	
 }
