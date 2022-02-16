@@ -5,7 +5,7 @@ static int	set_binary(t_pushswap *ps, t_node **list, int size)
 	int	count;
 	int	temp;
 
-	count = 0;	
+	count = 0;
 	temp = size;
 	while (temp > 0)
 	{
@@ -26,7 +26,7 @@ static void	sort(t_node **list, int size)
 {
 	t_node	*temp;
 	int		i;
-	int 	j;
+	int		j;
 
 	i = size - 1;
 	while (i > 0)
@@ -34,24 +34,24 @@ static void	sort(t_node **list, int size)
 		j = 0;
 		while (j < i)
 		{
-			if (list[j]->value > list[j+1]->value)
+			if (list[j]->value > list[j + 1]->value)
 			{
 				temp = list[j];
-				list[j] = list[j+1];
-				list[j+1] = temp;
+				list[j] = list[j + 1];
+				list[j + 1] = temp;
 			}
 			j++;				
 		}
 		i--;
 	}
-	return;
+	return ;
 }
 
-static int set_node(t_pushswap *ps, char* c)
+static int	set_node(t_pushswap *ps, char *c)
 {
-	t_node	*node;
-	char	**sp;
-	int	ptr;
+	t_node		*node;
+	char		**sp;
+	int			ptr;
 	long long	n;
 
 	ptr = 0;
@@ -81,7 +81,7 @@ static int binary_parsing(t_pushswap *ps, t_node **list)
 
 	ptr = 0;
 	cur = ps->a->head->next;
-	while(ptr < ps->size)
+	while (ptr < ps->size)
 	{
 		list[ptr++] = cur;
 		cur = cur->next;
@@ -109,5 +109,5 @@ int	parsing(t_pushswap *ps, int argc, char **argv)
 	}
 	if ((list = malloc(sizeof(t_node) * (ps->size))) == NULL)
 		return (-1);
-	return (binary_parsing(ps, list));	
+	return (binary_parsing(ps, list));
 }
