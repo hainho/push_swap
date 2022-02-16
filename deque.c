@@ -1,14 +1,17 @@
 #include "pushswap.h"
 
-t_deque	*new_deque()
+t_deque	*new_deque(void)
 {
 	t_deque	*deque;
 
-	if ((deque = malloc(sizeof(t_deque))) == NULL)
+	deque = malloc(sizeof(t_deque));
+	if (deque == NULL)
 		return (NULL);
-	if ((deque->head = new_node()) == NULL)
+	deque->head = new_node();
+	if (deque->head == NULL)
 		return (NULL);
-	if ((deque->tail = new_node()) == NULL)
+	deque->tail = new_node();
+	if (deque->tail == NULL)
 		return (NULL);
 	deque->head->next = deque->tail;
 	deque->tail->prev = deque->head;
@@ -38,7 +41,8 @@ t_node	*pop_back(t_deque *deque)
 
 	if (deque->length == 0)
 		return (NULL);
-	if ((back = node_pop_back(deque->tail)) == NULL)
+	back = node_pop_back(deque->tail);
+	if (back == NULL)
 		return (NULL);
 	(deque->length)--;
 	return (back);
@@ -50,7 +54,8 @@ t_node	*pop_front(t_deque *deque)
 
 	if (deque->length == 0)
 		return (NULL);
-	if ((front = node_pop_front(deque->head)) == NULL)
+	front = node_pop_front(deque->head);
+	if (front == NULL)
 		return (NULL);
 	(deque->length)--;
 	return (front);

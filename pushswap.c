@@ -1,14 +1,17 @@
 #include "pushswap.h"
 
-t_pushswap	*new_pushswap()
+t_pushswap	*new_pushswap(void)
 {
 	t_pushswap	*pushswap;
 
-	if ((pushswap = malloc(sizeof(t_pushswap))) == NULL)
+	pushswap = malloc(sizeof(t_pushswap));
+	if (pushswap == NULL)
 		return (NULL);
-	if ((pushswap->a = new_deque()) == NULL)
+	pushswap->a = new_deque();
+	if (pushswap->a == NULL)
 		return (NULL);
-	if ((pushswap->b = new_deque()) == NULL)
+	pushswap->b = new_deque();
+	if (pushswap->b == NULL)
 		return (NULL);
 	pushswap->size = 0;
 	pushswap->count = 0;
@@ -18,8 +21,8 @@ t_pushswap	*new_pushswap()
 
 void	print_a(t_pushswap *ps)
 {
-	t_node* node;
-	
+	t_node	*node;
+
 	node = ps->a->head->next;
 	while (node->next != NULL)
 		node = node->next;

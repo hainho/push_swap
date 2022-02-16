@@ -7,16 +7,16 @@ static void	cal(t_pushswap *ps, t_node *node, int temp)
 	else
 		ra(ps);
 	ps->count++;
-	return;
+	return ;
 }
 
 static void	redix(t_pushswap *ps, int idx)
 {
-	int count;
+	int	count;
 
 	count = 0;
 	while (count++ < ps->size)
-		cal(ps,ps->a->head->next, idx);
+		cal(ps, ps->a->head->next, idx);
 	while (ps->b->length > 0)
 	{
 		pa(ps);
@@ -28,7 +28,7 @@ static void	redix(t_pushswap *ps, int idx)
 void	redix_all(t_pushswap *ps)
 {
 	int	temp;
-	int idx;
+	int	idx;
 
 	idx = 0;
 	temp = 2;

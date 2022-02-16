@@ -43,6 +43,6 @@ long long	ft_atoi(const char *str)
 			return (0);
 	}
 	if (*str != 0)
-		return(LLONG_MIN);
+		return (LLONG_MIN);
 	return ((long long)n * sign);
 }

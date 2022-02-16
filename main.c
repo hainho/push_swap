@@ -2,9 +2,10 @@
 
 int	main(int argc, char **argv)
 {
-	t_pushswap *ps;
+	t_pushswap	*ps;
 
-	if ((ps = new_pushswap()) == NULL)
+	ps = new_pushswap();
+	if (ps == NULL)
 		return (-1);
 	if (parsing(ps, argc, argv) == -1)
 	{

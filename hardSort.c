@@ -1,6 +1,6 @@
 #include "pushswap.h"
 
-static int	three_sort(t_pushswap* ps, int base)
+static int	three_sort(t_pushswap *ps, int base)
 {
 	if (ps->a->head->next->bn == base + 0)
 	{
@@ -27,22 +27,21 @@ static int	three_sort(t_pushswap* ps, int base)
 	return (1);
 }
 
-void	three_sort_all(t_pushswap* ps, int base)
+void	three_sort_all(t_pushswap *ps, int base)
 {
 	while (three_sort(ps, base))
 	{
-		continue;
+		continue ;
 	}
 	return ;
 }
 
-
-void	five_sort_all(t_pushswap* ps)
+void	five_sort_all(t_pushswap *ps)
 {
 	int	c;
 
 	c = 5;
-	while(c--)
+	while (c--)
 	{
 		if (ps->a->head->next->bn < 2)
 			pb(ps);

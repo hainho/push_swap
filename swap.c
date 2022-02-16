@@ -7,7 +7,7 @@ static void	swap(t_deque *deque)
 	t_node	*temp3;
 
 	if (deque->length < 2)
-		return;
+		return ;
 	temp1 = deque->head->next;
 	temp2 = temp1->next;
 	temp3 = temp2->next;
@@ -17,21 +17,21 @@ static void	swap(t_deque *deque)
 	deque->head->next = temp2;
 	temp1->prev = temp2;
 	temp2->next = temp1;
-	return;
+	return ;
 }
 
 void	sa(t_pushswap *ps)
 {
 	swap(ps->a);
 	write(1, "sa\n", 3);
-	return;
+	return ;
 }
 
 void	sb(t_pushswap *ps)
 {
 	swap(ps->b);
 	write(1, "sb\n", 3);
-	return;
+	return ;
 }
 
 void	ss(t_pushswap *ps)
@@ -39,5 +39,5 @@ void	ss(t_pushswap *ps)
 	swap(ps->a);
 	swap(ps->b);
 	write(1, "ss\n", 3);
-	return;
+	return ;
 }
