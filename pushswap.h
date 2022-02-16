@@ -76,6 +76,9 @@ void	ft_bzero(void *s, size_t n);
 void	*ft_memset(void *b, int c, size_t len);
 void	*ft_memcpy(void *dst, const void *src, size_t n);
 
+int	free_pushswap(t_pushswap *ps);
+void	free_deque(t_deque *dq);
+
 void	print_a(t_pushswap *ps);
 void	print_b(t_pushswap *ps);
 

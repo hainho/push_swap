@@ -33,8 +33,6 @@ int	node_push_front(t_node *head, t_node *node)
 {
 	t_node	*front;
 
-	printf("node push front start\n");
-
 	if (head == NULL || node == NULL)
 		return (-1);
 	front = head->next;
@@ -44,8 +42,6 @@ int	node_push_front(t_node *head, t_node *node)
 	node->next = front;
 	head->next = node;
 	node->prev = head;
-	printf("node push front end\n");
-
 	return (0);
 }
 

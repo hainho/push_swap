@@ -11,7 +11,6 @@ static void	binary_length(t_pushswap *ps, int size)
 		count++;
 	}
 	ps->length = count;
-	printf("length : %d\n", count);
 	return;
 }
 
@@ -26,7 +25,6 @@ static int	set_binary(t_pushswap *ps, t_node **list, int size)
 		list[count]->bn = count;
 		count++;
 	}
-	printf("set binary end\n");
 	return (0);
 }
 
@@ -104,7 +102,6 @@ int	parsing(t_pushswap *ps, int argc, char **argv)
 		cur = cur->next;
 	}
 	sort(list, ps->size);
-	printf("sort end\n");
 	if (set_binary(ps, list, ps->size) == -1)
 	{
 		free(list);
