@@ -18,7 +18,7 @@ static int	ft_isspace(const char c)
 		return (0);
 }
 
-int	ft_atoi(const char *str)
+long long	ft_atoi(const char *str)
 {
 	unsigned long long	n;
 	int					sign;
@@ -38,9 +38,11 @@ int	ft_atoi(const char *str)
 		n = n * 10 + (*str - '0');
 		str++;
 		if (n >= LLONG_MAX && sign == 1)
-			return (-1);
+			return (LLONG_MIN);
 		if (n > LLONG_MAX && sign == -1)
 			return (0);
 	}
+	if (*str != 0)
+		return(LLONG_MIN);
 	return ((long long)n * sign);
 }

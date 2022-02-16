@@ -59,7 +59,7 @@ void	rra(t_pushswap *ps);
 void	rrb(t_pushswap *ps);
 void	rrr(t_pushswap *ps);
 
-int	ft_atoi(const char *str);
+long long	ft_atoi(const char *str);
 int	parsing(t_pushswap *ps, int argc, char **argv);
 void	redix_all(t_pushswap *ps);
 

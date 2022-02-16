@@ -60,14 +60,18 @@ static int set_node(t_pushswap *ps, char* c)
 	t_node	*node;
 	char	**sp;
 	int	ptr;
-	int	n;
+	long long	n;
 
 	ptr = 0;
 	if ((sp = ft_split(c, ' ')) == NULL)
 		return (-1);
 	while (sp[ptr])
 	{
+		if (ft_strlen(sp[ptr]) > 11)
+			return (-1);
 		n = ft_atoi(sp[ptr++]);
+		if (n > INT32_MAX || n < INT32_MIN)
+			return (-1);
 		if ((node = malloc(sizeof(t_node))) == NULL)
 			return (-1);
 		node->value = n;
