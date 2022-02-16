@@ -63,6 +63,9 @@ int	ft_atoi(const char *str);
 int	parsing(t_pushswap *ps, int argc, char **argv);
 void	redix_all(t_pushswap *ps);
 
+void	three_sort_all(t_pushswap* ps);
+void	five_sort_all(t_pushswap* ps);
+
 void	print_a(t_pushswap *ps);
 void	print_b(t_pushswap *ps);
 

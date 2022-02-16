@@ -15,38 +15,6 @@ static void	binary_length(t_pushswap *ps, int size)
 	return;
 }
 
-// static int set_bn(t_node *node, int n, int length)
-// {
-// 	int temp;
-// 	int ptr;
-	
-// 	if ((node->bn = malloc(sizeof(char) * (length + 1))) == NULL)
-// 		return (-1);
-// 	node->bn[length] = 0;
-// 	printf("length : %d\n", length);
-// 	temp = 1;
-// 	while (--length)
-// 		temp *= 2;
-// 	printf("temp : %d\n", temp);
-
-// 	ptr = 0;
-// 	while (temp > 0)
-// 	{
-// 		if (n / temp > 0)
-// 			node->bn[ptr] = '1';
-// 		else
-// 			node->bn[ptr] = '0';
-// 		n %= temp;
-// 		temp /= 2;
-// 		ptr++;
-// 		printf("temp : %d\n", temp);
-// 	}
-// 		printf("set_bn : %s\n", node->bn);
-	
-
-// 	return (0);
-// }
-
 static int	set_binary(t_pushswap *ps, t_node **list, int size)
 {
 	int	count;

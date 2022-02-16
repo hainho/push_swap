@@ -16,9 +16,16 @@ int	main(int argc, char **argv)
 	print_a(ps);
 	print_b(ps);
 
-	redix_all(ps);
+	if (ps->size == 3)
+		three_sort_all(ps);
+	else if (ps->size == 5)
+		five_sort_all(ps);
+	else
+		redix_all(ps);
 
 	print_a(ps);
 	print_b(ps);
+
+	printf("count : %d", ps->count);
 	return (0);
 }

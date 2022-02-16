@@ -23,7 +23,7 @@ void	print_a(t_pushswap *ps)
 	node = ps->a->head->next;
 	while (node->next != NULL)
 	{
-		printf("a node : %d\n", node->value);
+		printf("a node : %d\n", node->bn);
 		node = node->next;
 	}
 }
@@ -35,7 +35,7 @@ void	print_b(t_pushswap *ps)
 	node = ps->b->head->next;
 	while (node->next != NULL)
 	{
-		printf("b node : %d\n", node->value);
+		printf("b node : %d\n", node->bn);
 		node = node->next;
 	}
 }

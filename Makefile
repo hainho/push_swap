@@ -1,6 +1,6 @@
 CC=gcc
 CFLAGS= -Wall -Wextra -Werror
-OBJS=main.o deque.o ft_atoi.o node.o parsing.o push.o pushswap.o redix.o reverseRotate.o rotate.o swap.o
+OBJS=main.o deque.o ft_atoi.o node.o parsing.o push.o pushswap.o redix.o reverseRotate.o rotate.o swap.o hardSort.o
 TARGET=push_swap
 
 $(TARGET): $(OBJS)
