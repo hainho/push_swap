@@ -63,8 +63,18 @@ int	ft_atoi(const char *str);
 int	parsing(t_pushswap *ps, int argc, char **argv);
 void	redix_all(t_pushswap *ps);
 
-void	three_sort_all(t_pushswap* ps);
+void	three_sort_all(t_pushswap* ps, int base);
 void	five_sort_all(t_pushswap* ps);
+
+char	**ft_split(char const *s, char c);
+size_t	ft_strlen(const char *s);
+char	*ft_substr(char const *s, unsigned int start, size_t len);
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
+char	*ft_strdup(const char *s1);
+void	*ft_calloc(size_t count, size_t size);
+void	ft_bzero(void *s, size_t n);
+void	*ft_memset(void *b, int c, size_t len);
+void	*ft_memcpy(void *dst, const void *src, size_t n);
 
 void	print_a(t_pushswap *ps);
 void	print_b(t_pushswap *ps);

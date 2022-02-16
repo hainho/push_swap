@@ -17,7 +17,7 @@ int	main(int argc, char **argv)
 	print_b(ps);
 
 	if (ps->size == 3)
-		three_sort_all(ps);
+		three_sort_all(ps, 0);
 	else if (ps->size == 5)
 		five_sort_all(ps);
 	else

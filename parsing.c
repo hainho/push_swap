@@ -55,26 +55,49 @@ static void	sort(t_node **list, int size)
 	return;
 }
 
-int	parsing(t_pushswap *ps, int argc, char **argv)
+static int set_node(t_pushswap *ps, char* c)
 {
 	t_node	*node;
-	t_node	**list;
-	int		ptr;
-	int		n;
+	char	**sp;
+	int	ptr;
+	int	n;
 
-	ptr = 1;
-	if ((list = malloc(sizeof(t_node) * (argc - 1))) == NULL)
+	ptr = 0;
+	if ((sp = ft_split(c, ' ')) == NULL)
 		return (-1);
-	while (ptr < argc)
+	while (sp[ptr])
 	{
-		n = ft_atoi(argv[ptr++]);
+		n = ft_atoi(sp[ptr++]);
 		if ((node = malloc(sizeof(t_node))) == NULL)
 			return (-1);
 		node->value = n;
 		if (push_back(ps->a, node) == -1)
 			return (-1);
-		list[ptr-2] = node;
 		(ps->size)++;
+	}
+	return (0);
+}
+
+int	parsing(t_pushswap *ps, int argc, char **argv)
+{
+	t_node	*cur;
+	t_node	**list;
+	int		ptr;
+
+	ptr = 1;
+	while (ptr < argc)
+	{
+		if ((set_node(ps, argv[ptr++])) == -1)
+			return (-1);
+	}
+	if ((list = malloc(sizeof(t_node) * (ps->size))) == NULL)
+		return (-1);
+	ptr = 0;
+	cur = ps->a->head->next;
+	while(ptr < ps->size)
+	{
+		list[ptr++] = cur;
+		cur = cur->next;
 	}
 	sort(list, ps->size);
 	printf("sort end\n");
