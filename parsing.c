@@ -40,7 +40,7 @@ static void	sort(t_node **list, int size)
 				list[j] = list[j + 1];
 				list[j + 1] = temp;
 			}
-			j++;				
+			j++;
 		}
 		i--;
 	}
@@ -55,7 +55,8 @@ static int	set_node(t_pushswap *ps, char *c)
 	long long	n;
 
 	ptr = 0;
-	if ((sp = ft_split(c, ' ')) == NULL)
+	sp = ft_split(c, ' ');
+	if (sp == NULL)
 		return (-1);
 	while (sp[ptr])
 	{
@@ -64,7 +65,8 @@ static int	set_node(t_pushswap *ps, char *c)
 		n = ft_atoi(sp[ptr++]);
 		if (n > INT32_MAX || n < INT32_MIN)
 			return (-1);
-		if ((node = malloc(sizeof(t_node))) == NULL)
+		node = malloc(sizeof(t_node));
+		if (node == NULL)
 			return (-1);
 		node->value = n;
 		if (push_back(ps->a, node) == -1)
@@ -74,7 +76,7 @@ static int	set_node(t_pushswap *ps, char *c)
 	return (0);
 }
 
-static int binary_parsing(t_pushswap *ps, t_node **list)
+static int	binary_parsing(t_pushswap *ps, t_node **list)
 {
 	t_node	*cur;
 	int		ptr;
@@ -104,10 +106,11 @@ int	parsing(t_pushswap *ps, int argc, char **argv)
 	ptr = 1;
 	while (ptr < argc)
 	{
-		if ((set_node(ps, argv[ptr++])) == -1)
+		if (set_node(ps, argv[ptr++]) == -1)
 			return (-1);
 	}
-	if ((list = malloc(sizeof(t_node) * (ps->size))) == NULL)
+	list = malloc(sizeof(t_node) * (ps->size));
+	if (list == NULL)
 		return (-1);
 	return (binary_parsing(ps, list));
 }
