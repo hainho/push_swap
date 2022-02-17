@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   pushswap.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: iha <iha@student.42.kr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/02/17 10:47:45 by iha               #+#    #+#             */
+/*   Updated: 2022/02/17 10:48:16 by iha              ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "pushswap.h"
 
 t_pushswap	*new_pushswap(void)
@@ -17,24 +29,4 @@ t_pushswap	*new_pushswap(void)
 	pushswap->count = 0;
 	pushswap->length = 0;
 	return (pushswap);
-}
-
-void	print_a(t_pushswap *ps)
-{
-	t_node	*node;
-
-	node = ps->a->head->next;
-	while (node->next != NULL)
-		node = node->next;
-	return ;
-}
-
-void	print_b(t_pushswap *ps)
-{
-	t_node	*node;
-
-	node = ps->b->head->next;
-	while (node->next != NULL)
-		node = node->next;
-	return ;
 }
