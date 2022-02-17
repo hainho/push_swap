@@ -6,7 +6,7 @@
 /*   By: iha <iha@student.42.kr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 10:47:03 by iha               #+#    #+#             */
-/*   Updated: 2022/02/17 11:18:40 by iha              ###   ########.fr       */
+/*   Updated: 2022/02/17 15:04:09 by iha              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ void		redix_all(t_pushswap *ps);
 
 void		three_sort_all(t_pushswap *ps, int base);
 void		five_sort_all(t_pushswap *ps);
+int			is_sorted(t_pushswap *ps);
 
 char		**ft_split(char const *s, char c);
 size_t		ft_strlen(const char *s);

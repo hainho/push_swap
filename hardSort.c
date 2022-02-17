@@ -6,7 +6,7 @@
 /*   By: iha <iha@student.42.kr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 10:46:59 by iha               #+#    #+#             */
-/*   Updated: 2022/02/17 10:47:01 by iha              ###   ########.fr       */
+/*   Updated: 2022/02/17 15:03:57 by iha              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,4 +68,18 @@ void	five_sort_all(t_pushswap *ps)
 	pa(ps);
 	ps->count += 2;
 	return ;
+}
+
+int	is_sorted(t_pushswap *ps)
+{
+	t_node	*cur;
+
+	cur = ps->a->head->next;
+	while (cur->next)
+	{
+		if (cur->value > cur->next->value)
+			return (-1);
+		cur = cur->next;
+	}
+	return (0);
 }
