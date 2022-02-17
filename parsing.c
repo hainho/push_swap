@@ -6,7 +6,7 @@
 /*   By: iha <iha@student.42.kr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 10:47:30 by iha               #+#    #+#             */
-/*   Updated: 2022/02/17 11:19:27 by iha              ###   ########.fr       */
+/*   Updated: 2022/02/17 12:02:10 by iha              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,21 +59,17 @@ static void	sort(t_node **list, int size)
 	return ;
 }
 
-static int	set_node(t_pushswap *ps, char *c)
+static int	set_node(t_pushswap *ps, char **sp)
 {
 	t_node		*node;
-	char		**sp;
 	int			ptr;
 	long long	n;
 
 	ptr = 0;
-	sp = ft_split(c, ' ');
-	if (sp == NULL)
-		return (-1);
 	while (sp[ptr])
 	{
-		if (ft_strlen(sp[ptr]) > 11)
-			return (free_split(sp));
+		// if (ft_strlen(sp[ptr]) > 11)
+			// return (free_split(sp));
 		n = ft_atoi(sp[ptr++]);
 		if (n > INT32_MAX || n < INT32_MIN)
 			return (free_split(sp));
@@ -85,7 +81,6 @@ static int	set_node(t_pushswap *ps, char *c)
 			return (free_split(sp));
 		(ps->size)++;
 	}
-	free_split(sp);
 	return (0);
 }
 
@@ -115,12 +110,17 @@ int	parsing(t_pushswap *ps, int argc, char **argv)
 {
 	t_node	**list;
 	int		ptr;
+	char	**sp;
 
 	ptr = 1;
 	while (ptr < argc)
 	{
-		if (set_node(ps, argv[ptr++]) == -1)
+		sp = ft_split(argv[ptr++], ' ');
+		if (sp == NULL)
 			return (-1);
+		if (set_node(ps, sp) == -1)
+			return (-1);
+		free_split(sp);
 	}
 	list = malloc(sizeof(t_node) * (ps->size));
 	if (list == NULL)
