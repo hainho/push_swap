@@ -6,7 +6,7 @@
 /*   By: iha <iha@student.42.kr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 10:47:30 by iha               #+#    #+#             */
-/*   Updated: 2022/02/17 12:02:10 by iha              ###   ########.fr       */
+/*   Updated: 2022/02/17 12:16:22 by iha              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,6 @@ static int	set_node(t_pushswap *ps, char **sp)
 	ptr = 0;
 	while (sp[ptr])
 	{
-		// if (ft_strlen(sp[ptr]) > 11)
-			// return (free_split(sp));
 		n = ft_atoi(sp[ptr++]);
 		if (n > INT32_MAX || n < INT32_MIN)
 			return (free_split(sp));
