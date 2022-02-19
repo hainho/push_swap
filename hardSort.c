@@ -6,7 +6,7 @@
 /*   By: iha <iha@student.42.kr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 10:46:59 by iha               #+#    #+#             */
-/*   Updated: 2022/02/17 15:03:57 by iha              ###   ########.fr       */
+/*   Updated: 2022/02/19 23:36:52 by iha              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,21 +18,21 @@ static int	three_sort(t_pushswap *ps, int base)
 	{
 		if (ps->a->head->next->next->bn == base + 1)
 			return (0);
-		if (ps->a->head->next->next->bn == base + 2)
+		else if (ps->a->head->next->next->bn == base + 2)
 			rra(ps);
 	}
-	if (ps->a->head->next->bn == base + 1)
+	else if (ps->a->head->next->bn == base + 1)
 	{
 		if (ps->a->head->next->next->bn == base + 0)
 			sa(ps);
-		if (ps->a->head->next->next->bn == base + 2)
+		else if (ps->a->head->next->next->bn == base + 2)
 			rra(ps);
 	}
-	if (ps->a->head->next->bn == base + 2)
+	else if (ps->a->head->next->bn == base + 2)
 	{
 		if (ps->a->head->next->next->bn == base + 0)
 			ra(ps);
-		if (ps->a->head->next->next->bn == base + 1)
+		else if (ps->a->head->next->next->bn == base + 1)
 			sa(ps);
 	}
 	ps->count++;
@@ -43,7 +43,6 @@ void	three_sort_all(t_pushswap *ps, int base)
 {
 	while (three_sort(ps, base))
 	{
-		continue ;
 	}
 	return ;
 }
@@ -75,7 +74,7 @@ int	is_sorted(t_pushswap *ps)
 	t_node	*cur;
 
 	cur = ps->a->head->next;
-	while (cur->next)
+	while (cur->next->next)
 	{
 		if (cur->value > cur->next->value)
 			return (-1);

@@ -6,7 +6,7 @@
 /*   By: iha <iha@student.42.kr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 10:47:30 by iha               #+#    #+#             */
-/*   Updated: 2022/02/17 12:16:22 by iha              ###   ########.fr       */
+/*   Updated: 2022/02/19 23:11:43 by iha              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,12 @@ static int	set_binary(t_pushswap *ps, t_node **list, int size)
 		count++;
 	}
 	ps->length = count;
+	count = 0;
+	while (++count < size)
+	{
+		if (list[count - 1]->value == list[count]->value)
+			return (-1);
+	}
 	count = 0;
 	while (count < size)
 	{
