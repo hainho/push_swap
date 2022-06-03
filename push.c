@@ -6,7 +6,7 @@
 /*   By: iha <iha@student.42.kr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 10:47:39 by iha               #+#    #+#             */
-/*   Updated: 2022/02/17 10:47:42 by iha              ###   ########.fr       */
+/*   Updated: 2022/06/04 06:53:45 by iha              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ void	pa(t_pushswap *ps)
 {
 	push(ps->b, ps->a);
 	write(1, "pa\n", 3);
+	ps->count++;
+
 	return ;
 }
 
@@ -37,5 +39,7 @@ void	pb(t_pushswap *ps)
 {
 	push(ps->a, ps->b);
 	write(1, "pb\n", 3);
+	ps->count++;
+
 	return ;
 }

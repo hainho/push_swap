@@ -6,7 +6,7 @@
 /*   By: iha <iha@student.42.kr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 10:47:03 by iha               #+#    #+#             */
-/*   Updated: 2022/06/04 03:25:18 by iha              ###   ########.fr       */
+/*   Updated: 2022/06/04 06:42:21 by iha              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,5 +92,8 @@ int			free_pushswap(t_pushswap *ps);
 void		free_deque(t_deque *dq);
 int			free_split(char **sp);
 void		quick_a(t_pushswap *ps);
+
+void		shift_a_to_b(t_pushswap *ps);
+void		shift_b_to_a(t_pushswap *ps);
 
 #endif

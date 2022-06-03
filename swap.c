@@ -6,7 +6,7 @@
 /*   By: iha <iha@student.42.kr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 10:46:44 by iha               #+#    #+#             */
-/*   Updated: 2022/02/17 10:46:46 by iha              ###   ########.fr       */
+/*   Updated: 2022/06/04 06:53:01 by iha              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void	sa(t_pushswap *ps)
 {
 	swap(ps->a);
 	write(1, "sa\n", 3);
+	ps->count++;
 	return ;
 }
 
@@ -43,6 +44,7 @@ void	sb(t_pushswap *ps)
 {
 	swap(ps->b);
 	write(1, "sb\n", 3);
+	ps->count++;
 	return ;
 }
 
@@ -51,5 +53,6 @@ void	ss(t_pushswap *ps)
 	swap(ps->a);
 	swap(ps->b);
 	write(1, "ss\n", 3);
+	ps->count++;
 	return ;
 }

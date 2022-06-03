@@ -102,26 +102,6 @@ void	shift_a(t_pushswap *ps)
 	}
 }
 
-void	print_ps(t_pushswap *ps)
-{
-	t_node *cur;
-
-	cur = ps->a->head->next;
-	printf("\na : ");
-	while(cur)
-	{
-		printf("%d ", cur->bn);
-		cur = cur->next;
-	}
-	printf("\nb : ");
-	cur = ps->b->head->next;
-	while(cur)
-	{
-		printf("%d ", cur->bn);
-		cur = cur->next;
-	}
-}
-
 void	quick_a(t_pushswap *ps)
 {
 	int	pivot;
