@@ -6,7 +6,7 @@
 /*   By: iha <iha@student.42.kr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 10:47:03 by iha               #+#    #+#             */
-/*   Updated: 2022/02/17 15:04:09 by iha              ###   ########.fr       */
+/*   Updated: 2022/06/04 03:25:18 by iha              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,5 +91,6 @@ void		*ft_memcpy(void *dst, const void *src, size_t n);
 int			free_pushswap(t_pushswap *ps);
 void		free_deque(t_deque *dq);
 int			free_split(char **sp);
+void		quick_a(t_pushswap *ps);
 
 #endif

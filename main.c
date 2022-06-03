@@ -6,7 +6,7 @@
 /*   By: iha <iha@student.42.kr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 10:47:24 by iha               #+#    #+#             */
-/*   Updated: 2022/02/19 23:43:21 by iha              ###   ########.fr       */
+/*   Updated: 2022/06/04 03:25:02 by iha              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	main(int argc, char **argv)
 	else if (ps->size == 5)
 		five_sort_all(ps);
 	else
-		redix_all(ps);
+		quick_a(ps);
 	free_pushswap(ps);
 	return (0);
 }
