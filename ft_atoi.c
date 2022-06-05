@@ -6,7 +6,7 @@
 /*   By: iha <iha@student.42.kr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 10:46:26 by iha               #+#    #+#             */
-/*   Updated: 2022/02/17 10:46:26 by iha              ###   ########.fr       */
+/*   Updated: 2022/06/06 06:55:14 by iha              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ long long	ft_atoi(const char *str)
 		str++;
 	if (*str == '+' || *str == '-')
 	{
+		if (*str == '-' && ft_strlen(str) == 1)
+			return (LLONG_MIN);
 		if (*str == '-')
 			sign = -1;
 		str++;
@@ -49,10 +51,8 @@ long long	ft_atoi(const char *str)
 	{
 		n = n * 10 + (*str - '0');
 		str++;
-		if (n >= LLONG_MAX && sign == 1)
+		if ((n >= LONG_MAX && sign == 1) || (n > LONG_MAX && sign == -1))
 			return (LLONG_MIN);
-		if (n > LLONG_MAX && sign == -1)
-			return (0);
 	}
 	if (*str != 0)
 		return (LLONG_MIN);

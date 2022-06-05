@@ -6,7 +6,7 @@
 /*   By: iha <iha@student.42.kr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 10:47:24 by iha               #+#    #+#             */
-/*   Updated: 2022/06/04 07:16:47 by iha              ###   ########.fr       */
+/*   Updated: 2022/06/06 07:17:08 by iha              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,13 @@ int	main(int argc, char **argv)
 	t_pushswap	*ps;
 
 	if (argc == 1)
-		return (-1);
+		return (0);
 	ps = new_pushswap();
 	if (ps == NULL)
 		return (-1);
 	if (parsing(ps, argc, argv) == -1)
 	{
-		write(1, "Error\n", 6);
+		write(2, "Error\n", 6);
 		return (free_pushswap(ps));
 	}
 	if (is_sorted(ps) == 0)
