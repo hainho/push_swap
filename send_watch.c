@@ -6,27 +6,27 @@
 /*   By: iha <iha@student.42.kr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 04:40:37 by iha               #+#    #+#             */
-/*   Updated: 2022/06/06 04:40:38 by iha              ###   ########.fr       */
+/*   Updated: 2022/06/06 04:46:48 by iha              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-static int		sqrt(int n)
+static int	sqrt(int n)
 {
-	int idx;
+	int	idx;
 
 	if (n < 4)
-		return 1;
+		return (1);
 	idx = 3;
 	while (idx * idx < n)
 		idx += 2;
 	return (idx - 1);
 }
 
-int		cal_chuck(int size)
+static int	cal_chuck(int size)
 {
-	int chuck_size;
+	int	chuck_size;
 
 	chuck_size = sqrt(size);
 	chuck_size += 2 * sqrt(chuck_size);
@@ -52,7 +52,7 @@ void	shift_a_to_b(t_pushswap *ps)
 	}
 }
 
-int		cal_direction(t_pushswap *ps)
+static int	cal_direction(t_pushswap *ps)
 {
 	int		idx;
 	t_node	*cur;

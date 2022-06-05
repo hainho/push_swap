@@ -6,13 +6,13 @@
 /*   By: iha <iha@student.42.kr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 04:42:01 by iha               #+#    #+#             */
-/*   Updated: 2022/06/06 04:42:02 by iha              ###   ########.fr       */
+/*   Updated: 2022/06/06 04:47:32 by iha              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-static int run_two_char_cmd(t_pushswap *ps, char *cmd)
+static int	run_two_char_cmd(t_pushswap *ps, char *cmd)
 {
 	if (ft_strncmp(cmd, "sa\n", 3) == 0)
 		sa(ps, 0);
@@ -35,7 +35,7 @@ static int run_two_char_cmd(t_pushswap *ps, char *cmd)
 	return (0);
 }
 
-static int run_three_char_cmd(t_pushswap *ps, char *cmd)
+static int	run_three_char_cmd(t_pushswap *ps, char *cmd)
 {
 	if (ft_strncmp(cmd, "rra\n", 4) == 0)
 		rra(ps, 0);
@@ -48,11 +48,11 @@ static int run_three_char_cmd(t_pushswap *ps, char *cmd)
 	return (0);
 }
 
-int 	run_cmd(t_pushswap *ps)
+int	run_cmd(t_pushswap *ps)
 {
-	int 	len;
+	int		len;
 	int		rt;
-	char    *cmd;
+	char	*cmd;
 
 	cmd = get_next_line(0);
 	if (cmd == NULL)

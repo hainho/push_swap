@@ -6,13 +6,13 @@
 /*   By: iha <iha@student.42.kr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 04:40:51 by iha               #+#    #+#             */
-/*   Updated: 2022/06/06 04:40:51 by iha              ###   ########.fr       */
+/*   Updated: 2022/06/06 04:49:45 by iha              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-int		get_min_bn(t_pushswap *ps)
+static int	get_min_bn(t_pushswap *ps)
 {
 	t_node	*cur_node;
 	int		min_bn;
@@ -25,10 +25,10 @@ int		get_min_bn(t_pushswap *ps)
 			min_bn = cur_node->bn;
 		cur_node = cur_node->next;
 	}
-	return min_bn;
+	return (min_bn);
 }
 
-int		cal_pivot(t_pushswap *ps)
+static int	cal_pivot(t_pushswap *ps)
 {
 	t_node	*cur_node;
 	int		min_bn;
@@ -48,7 +48,7 @@ int		cal_pivot(t_pushswap *ps)
 	return ((max_bn + min_bn) / 2);
 }
 
-void	shift_with_order(t_pushswap *ps, int count)
+static void	shift_with_order(t_pushswap *ps, int count)
 {
 	while (count--)
 	{
@@ -57,7 +57,7 @@ void	shift_with_order(t_pushswap *ps, int count)
 	}
 }
 
-void	shift_with_reverse(t_pushswap *ps, int count)
+static void	shift_with_reverse(t_pushswap *ps, int count)
 {
 	int	temp;
 
@@ -96,7 +96,7 @@ void	sort_a_3(t_pushswap *ps)
 		shift_with_reverse(ps, 3);
 }
 
-void	shift_a(t_pushswap *ps)
+static void	shift_a(t_pushswap *ps)
 {
 	if (ps->a->length == 3)
 		sort_a_3(ps);
@@ -123,7 +123,7 @@ void	quick_a(t_pushswap *ps)
 	if (ps->a->length <= 3)
 	{
 		shift_a(ps);
-		return;
+		return ;
 	}
 	stack = 0;
 	count = ps->a->length;
