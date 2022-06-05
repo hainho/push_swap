@@ -40,8 +40,8 @@ void	shift_with_order(t_pushswap *ps, int count)
 {
 	while (count--)
 	{
-		pb(ps);
-		rb(ps);
+		pb(ps, 1);
+		rb(ps, 1);
 	}
 }
 
@@ -51,9 +51,9 @@ void	shift_with_reverse(t_pushswap *ps, int count)
 
 	temp = count;
 	while (temp--)
-		pb(ps);
+		pb(ps, 1);
 	while (count--)
-		rb(ps);
+		rb(ps, 1);
 }
 
 void	sort_a_3(t_pushswap *ps)
@@ -64,19 +64,19 @@ void	sort_a_3(t_pushswap *ps)
 	if (ps->a->head->next->bn == min_bn)
 	{
 		if (ps->a->head->next->next->bn == min_bn + 2)
-			ra(ps);
+			ra(ps, 1);
 	}
 	else if (ps->a->head->next->bn == min_bn + 1)
 	{
 		if (ps->a->head->next->next->bn == min_bn + 2)
-			rra(ps);
+			rra(ps, 1);
 		else
-			sa(ps);
+			sa(ps, 1);
 	}
 	else
 	{
 		if (ps->a->head->next->next->bn == min_bn)
-			ra(ps);
+			ra(ps, 1);
 	}
 	if (ps->a->head->next->bn == min_bn)
 		shift_with_order(ps, 3);
@@ -97,8 +97,8 @@ void	shift_a(t_pushswap *ps)
 	}
 	else if (ps->a->length == 1)
 	{
-		pb(ps);
-		rb(ps);
+		pb(ps, 1);
+		rb(ps, 1);
 	}
 }
 
@@ -120,14 +120,14 @@ void	quick_a(t_pushswap *ps)
 	{
 		if (ps->a->head->next->bn > pivot)
 		{
-			pb(ps);
+			pb(ps, 1);
 			stack++;
 		}
 		else
-			ra(ps);
+			ra(ps, 1);
 	}
 	quick_a(ps);
 	while (stack--)
-		pa(ps);
+		pa(ps, 1);
 	quick_a(ps);
 }

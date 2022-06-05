@@ -6,7 +6,7 @@
 /*   By: iha <iha@student.42.kr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 10:46:44 by iha               #+#    #+#             */
-/*   Updated: 2022/06/06 00:18:43 by iha              ###   ########.fr       */
+/*   Updated: 2022/06/06 04:29:03 by iha              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,24 +32,27 @@ static void	swap(t_deque *deque)
 	return ;
 }
 
-void	sa(t_pushswap *ps)
+void	sa(t_pushswap *ps, int is_print)
 {
 	swap(ps->a);
-	ps->count++;
+	if (is_print == 1)
+		write(1, "sa\n", 3);
 	return ;
 }
 
-void	sb(t_pushswap *ps)
+void	sb(t_pushswap *ps, int is_print)
 {
 	swap(ps->b);
-	ps->count++;
+	if (is_print == 1)
+		write(1, "sb\n", 3);
 	return ;
 }
 
-void	ss(t_pushswap *ps)
+void	ss(t_pushswap *ps, int is_print)
 {
 	swap(ps->a);
 	swap(ps->b);
-	ps->count++;
+	if (is_print == 1)
+		write(1, "ss\n", 3);
 	return ;
 }

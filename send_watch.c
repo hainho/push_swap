@@ -30,13 +30,13 @@ void	shift_a_to_b(t_pushswap *ps)
 	{
 		if (ps->a->head->next->bn < ps->b->length)
 		{
-			pb(ps);
-			rb(ps);
+			pb(ps, 1);
+			rb(ps, 1);
 		}
 		else if (ps->a->head->next->bn < ps->b->length + chuck_size)
-			pb(ps);
+			pb(ps, 1);
 		else
-			ra(ps);
+			ra(ps, 1);
 	}
 }
 
@@ -64,14 +64,14 @@ void	shift_b_to_a(t_pushswap *ps)
 		if (cal_direction(ps) == 1)
 		{
 			while (ps->b->head->next->bn + 1 != ps->b->length)
-				rb(ps);
-			pa(ps);
+				rb(ps, 1);
+			pa(ps, 1);
 		}
 		else
 		{
 			while (ps->b->head->next->bn + 1 != ps->b->length)
-				rrb(ps);
-			pa(ps);
+				rrb(ps, 1);
+			pa(ps, 1);
 		}
 	}
 }

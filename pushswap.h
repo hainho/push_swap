@@ -6,7 +6,7 @@
 /*   By: iha <iha@student.42.kr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 10:47:03 by iha               #+#    #+#             */
-/*   Updated: 2022/06/04 07:57:52 by iha              ###   ########.fr       */
+/*   Updated: 2022/06/06 04:30:19 by iha              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,20 +64,20 @@ t_node		*pop_front(t_deque *deque);
 
 t_pushswap	*new_pushswap(void);
 
-void		sa(t_pushswap *ps);
-void		sb(t_pushswap *ps);
-void		ss(t_pushswap *ps);
+void		sa(t_pushswap *ps, int is_print);
+void		sb(t_pushswap *ps, int is_print);
+void		ss(t_pushswap *ps, int is_print);
 
-void		pa(t_pushswap *ps);
-void		pb(t_pushswap *ps);
+void		pa(t_pushswap *ps, int is_print);
+void		pb(t_pushswap *ps, int is_print);
 
-void		ra(t_pushswap *ps);
-void		rb(t_pushswap *ps);
-void		rr(t_pushswap *ps);
+void		ra(t_pushswap *ps, int is_print);
+void		rb(t_pushswap *ps, int is_print);
+void		rr(t_pushswap *ps, int is_print);
 
-void		rra(t_pushswap *ps);
-void		rrb(t_pushswap *ps);
-void		rrr(t_pushswap *ps);
+void		rra(t_pushswap *ps, int is_print);
+void		rrb(t_pushswap *ps, int is_print);
+void		rrr(t_pushswap *ps, int is_print);
 
 long long	ft_atoi(const char *str);
 int			parsing(t_pushswap *ps, int argc, char **argv);

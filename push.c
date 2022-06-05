@@ -6,7 +6,7 @@
 /*   By: iha <iha@student.42.kr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 10:47:39 by iha               #+#    #+#             */
-/*   Updated: 2022/06/04 06:53:45 by iha              ###   ########.fr       */
+/*   Updated: 2022/06/06 04:28:33 by iha              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,20 +26,18 @@ static void	push(t_deque *src, t_deque *dst)
 	return ;
 }
 
-void	pa(t_pushswap *ps)
+void	pa(t_pushswap *ps, int is_print)
 {
 	push(ps->b, ps->a);
-	write(1, "pa\n", 3);
-	ps->count++;
-
+	if (is_print == 1)
+		write(1, "pa\n", 3);
 	return ;
 }
 
-void	pb(t_pushswap *ps)
+void	pb(t_pushswap *ps, int is_print)
 {
 	push(ps->a, ps->b);
-	write(1, "pb\n", 3);
-	ps->count++;
-
+	if (is_print == 1)
+		write(1, "pb\n", 3);
 	return ;
 }

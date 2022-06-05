@@ -3,21 +3,21 @@
 static int run_two_char_cmd(t_pushswap *ps, char *cmd)
 {
 	if (ft_strncmp(cmd, "sa\n", 3) == 0)
-		sa(ps);
+		sa(ps, 0);
 	else if (ft_strncmp(cmd, "sb\n", 3) == 0)
-		sb(ps);
+		sb(ps, 0);
 	else if (ft_strncmp(cmd, "ss\n", 3) == 0)
-		ss(ps);
+		ss(ps, 0);
 	else if (ft_strncmp(cmd, "pa\n", 3) == 0)
-		pa(ps);
+		pa(ps, 0);
 	else if (ft_strncmp(cmd, "pb\n", 3) == 0)
-		pb(ps);
+		pb(ps, 0);
 	else if (ft_strncmp(cmd, "ra\n", 3) == 0)
-		ra(ps);
+		ra(ps, 0);
 	else if (ft_strncmp(cmd, "rb\n", 3) == 0)
-		rb(ps);
+		rb(ps, 0);
 	else if (ft_strncmp(cmd, "rr\n", 3) == 0)
-		rr(ps);
+		rr(ps, 0);
 	else
 		return (-1);
 	return (0);
@@ -26,11 +26,11 @@ static int run_two_char_cmd(t_pushswap *ps, char *cmd)
 static int run_three_char_cmd(t_pushswap *ps, char *cmd)
 {
 	if (ft_strncmp(cmd, "rra\n", 4) == 0)
-		rra(ps);
+		rra(ps, 0);
 	else if (ft_strncmp(cmd, "rrb\n", 4) == 0)
-		rrb(ps);
+		rrb(ps, 0);
 	else if (ft_strncmp(cmd, "rrr\n", 4) == 0)
-		rrr(ps);
+		rrr(ps, 0);
 	else
 		return (-1);
 	return (0);

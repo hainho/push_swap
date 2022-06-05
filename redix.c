@@ -6,7 +6,7 @@
 /*   By: iha <iha@student.42.kr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 10:47:49 by iha               #+#    #+#             */
-/*   Updated: 2022/02/17 10:47:51 by iha              ###   ########.fr       */
+/*   Updated: 2022/06/06 04:33:28 by iha              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 static void	cal(t_pushswap *ps, t_node *node, int temp)
 {
 	if (node->bn % temp / (temp / 2) == 0)
-		pb(ps);
+		pb(ps, 1);
 	else
-		ra(ps);
+		ra(ps, 1);
 	ps->count++;
 	return ;
 }
@@ -31,7 +31,7 @@ static void	redix(t_pushswap *ps, int idx)
 		cal(ps, ps->a->head->next, idx);
 	while (ps->b->length > 0)
 	{
-		pa(ps);
+		pa(ps, 1);
 		ps->count++;
 	}
 	return ;
