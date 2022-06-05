@@ -6,31 +6,11 @@
 /*   By: iha <iha@student.42.kr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 10:47:24 by iha               #+#    #+#             */
-/*   Updated: 2022/06/04 07:13:49 by iha              ###   ########.fr       */
+/*   Updated: 2022/06/04 07:16:47 by iha              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
-
-void	print_ps(t_pushswap *ps)
-{
-	t_node *cur;
-
-	cur = ps->a->head->next;
-	printf("\na : ");
-	while(cur)
-	{
-		printf("%d ", cur->bn);
-		cur = cur->next;
-	}
-	printf("\nb : ");
-	cur = ps->b->head->next;
-	while(cur)
-	{
-		printf("%d ", cur->bn);
-		cur = cur->next;
-	}
-}
 
 int	main(int argc, char **argv)
 {
