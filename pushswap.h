@@ -6,7 +6,7 @@
 /*   By: iha <iha@student.42.kr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 10:47:03 by iha               #+#    #+#             */
-/*   Updated: 2022/06/06 04:30:19 by iha              ###   ########.fr       */
+/*   Updated: 2022/06/07 14:36:16 by iha              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,5 +111,7 @@ int			ft_strncmp(const char *s1, const char *s2, size_t n);
 
 int			run_cmd(t_pushswap *ps);
 void		ok_check(t_pushswap *ps);
+
+void		fix_outlier(t_pushswap *ps, int idx, int direction);
 
 #endif
