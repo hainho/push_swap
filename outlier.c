@@ -6,7 +6,7 @@
 /*   By: iha <iha@student.42.kr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 17:52:20 by iha               #+#    #+#             */
-/*   Updated: 2022/06/07 17:52:21 by iha              ###   ########.fr       */
+/*   Updated: 2022/06/08 05:37:22 by iha              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ void	fix_outlier(t_pushswap *ps, int i, int direction, int sum)
 	int	chunk;
 
 	target = ps->b->length - 1;
-	chunk = cal_chunk(ps->length);
+	chunk = cal_chunk(ps->size);
 	if (i * (i + 1) + target < (target - i) * i - sum && i > chunk / 5)
 	{
 		pop_outlier(ps, direction, target);

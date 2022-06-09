@@ -6,7 +6,7 @@
 /*   By: iha <iha@student.42.kr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 10:47:24 by iha               #+#    #+#             */
-/*   Updated: 2022/06/07 17:08:44 by iha              ###   ########.fr       */
+/*   Updated: 2022/06/08 10:56:07 by iha              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ int	main(int argc, char **argv)
 		write(2, "Error\n", 6);
 		return (free_pushswap(ps));
 	}
-	if (is_sorted(ps) == 0)
+	if (is_sorted(ps->a, ps->size) == 0)
 		return (free_pushswap(ps));
 	if (ps->size == 3)
 		three_sort_all(ps, 0);

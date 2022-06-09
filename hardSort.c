@@ -6,7 +6,7 @@
 /*   By: iha <iha@student.42.kr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 10:46:59 by iha               #+#    #+#             */
-/*   Updated: 2022/06/06 04:44:35 by iha              ###   ########.fr       */
+/*   Updated: 2022/06/08 10:50:55 by iha              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ static int	three_sort(t_pushswap *ps, int base)
 		else if (ps->a->head->next->next->bn == base + 1)
 			sa(ps, 1);
 	}
-	ps->count++;
 	return (1);
 }
 
@@ -58,25 +57,37 @@ void	five_sort_all(t_pushswap *ps)
 			pb(ps, 1);
 		else
 			ra(ps, 1);
-		ps->count++;
 	}
 	three_sort_all(ps, 2);
 	if (ps->b->head->next->bn == 0)
 		rb(ps, 1);
 	pa(ps, 1);
 	pa(ps, 1);
-	ps->count += 2;
 	return ;
 }
 
-int	is_sorted(t_pushswap *ps)
+int	is_sorted(t_deque *dq, int len)
 {
 	t_node	*cur;
 
-	cur = ps->a->head->next;
-	while (cur->next->next)
+	cur = dq->head->next;
+	while (--len)
 	{
 		if (cur->value > cur->next->value)
+			return (-1);
+		cur = cur->next;
+	}
+	return (0);
+}
+
+int	rev_is_sorted(t_deque *dq, int len)
+{
+	t_node	*cur;
+
+	cur = dq->head->next;
+	while (--len)
+	{
+		if (cur->value < cur->next->value)
 			return (-1);
 		cur = cur->next;
 	}

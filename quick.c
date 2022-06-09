@@ -6,38 +6,22 @@
 /*   By: iha <iha@student.42.kr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 04:40:51 by iha               #+#    #+#             */
-/*   Updated: 2022/06/06 04:49:45 by iha              ###   ########.fr       */
+/*   Updated: 2022/06/09 13:59:11 by iha              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-static int	get_min_bn(t_pushswap *ps)
-{
-	t_node	*cur_node;
-	int		min_bn;
-
-	min_bn = ps->a->head->next->bn;
-	cur_node = ps->a->head->next->next;
-	while (cur_node->next)
-	{
-		if (min_bn > cur_node->bn)
-			min_bn = cur_node->bn;
-		cur_node = cur_node->next;
-	}
-	return (min_bn);
-}
-
-static int	cal_pivot(t_pushswap *ps)
+static void	cal_pivot(t_deque *dq, int length, int pivot[2])
 {
 	t_node	*cur_node;
 	int		min_bn;
 	int		max_bn;
 
-	min_bn = ps->a->head->next->bn;
+	min_bn = dq->head->next->bn;
 	max_bn = min_bn;
-	cur_node = ps->a->head->next->next;
-	while (cur_node->next)
+	cur_node = dq->head->next->next;
+	while (length-- > 1 && cur_node)
 	{
 		if (min_bn > cur_node->bn)
 			min_bn = cur_node->bn;
@@ -45,101 +29,164 @@ static int	cal_pivot(t_pushswap *ps)
 			max_bn = cur_node->bn;
 		cur_node = cur_node->next;
 	}
-	return ((max_bn + min_bn) / 2);
+	pivot[0] = (max_bn - min_bn) / 3 + min_bn;
+	pivot[1] = (max_bn - min_bn) / 3 * 2 + min_bn;
 }
 
-static void	shift_with_order(t_pushswap *ps, int count)
+void	rev_rotate_all(t_pushswap *ps, int left, int right)
 {
-	while (count--)
+	while (left > 0 || right > 0)
 	{
-		pb(ps, 1);
-		rb(ps, 1);
-	}
-}
-
-static void	shift_with_reverse(t_pushswap *ps, int count)
-{
-	int	temp;
-
-	temp = count;
-	while (temp--)
-		pb(ps, 1);
-	while (count--)
-		rb(ps, 1);
-}
-
-void	sort_a_3(t_pushswap *ps)
-{
-	int		min_bn;
-
-	min_bn = get_min_bn(ps);
-	if (ps->a->head->next->bn == min_bn)
-	{
-		if (ps->a->head->next->next->bn == min_bn + 2)
-			ra(ps, 1);
-	}
-	else if (ps->a->head->next->bn == min_bn + 1)
-	{
-		if (ps->a->head->next->next->bn == min_bn + 2)
+		if (left > 0 && right > 0)
+			rrr(ps, 1);
+		else if (left > 0)
 			rra(ps, 1);
-		else
-			sa(ps, 1);
-	}
-	else
-	{
-		if (ps->a->head->next->next->bn == min_bn)
-			ra(ps, 1);
-	}
-	if (ps->a->head->next->bn == min_bn)
-		shift_with_order(ps, 3);
-	else
-		shift_with_reverse(ps, 3);
-}
-
-static void	shift_a(t_pushswap *ps)
-{
-	if (ps->a->length == 3)
-		sort_a_3(ps);
-	else if (ps->a->length == 2)
-	{
-		if (ps->a->head->next->bn < ps->a->head->next->next->bn)
-			shift_with_order(ps, 2);
-		else
-			shift_with_reverse(ps, 2);
-	}
-	else if (ps->a->length == 1)
-	{
-		pb(ps, 1);
-		rb(ps, 1);
+		else if (right > 0)
+			rrb(ps, 1);
+		left--;
+		right--;
 	}
 }
 
-void	quick_a(t_pushswap *ps)
+void	shift_a_to_b(t_pushswap *ps, int length, int count[3], int pivot[2])
 {
-	int	pivot;
-	int	stack;
-	int	count;
-
-	if (ps->a->length <= 3)
+	count[0] = 0;
+	count[1] = 0;
+	count[2] = 0;
+	while (length--)
 	{
-		shift_a(ps);
-		return ;
-	}
-	stack = 0;
-	count = ps->a->length;
-	pivot = cal_pivot(ps);
-	while (count--)
-	{
-		if (ps->a->head->next->bn > pivot)
+		if (ps->a->head->next->bn <= pivot[0])
 		{
 			pb(ps, 1);
-			stack++;
+			count[0]++;
+		}
+		else if (ps->a->head->next->bn <= pivot[1])
+		{
+			pb(ps, 1);
+			if (ps->a->head->next->bn > pivot[1] && length)
+			{
+				length--;
+				rr(ps, 1);
+				count[2]++;
+			}
+			else
+				rb(ps ,1);
+			count[1]++;
 		}
 		else
+		{
 			ra(ps, 1);
+			count[2]++;
+		}
 	}
-	quick_a(ps);
-	while (stack--)
+}
+
+void	shift_b_to_a(t_pushswap *ps, int length, int count[3], int pivot[2])
+{
+	count[0] = 0;
+	count[1] = 0;
+	count[2] = 0;
+	while (length--)
+	{
+		if (ps->b->head->next->bn > pivot[1])
+		{
+			pa(ps, 1);
+			count[2]++;
+		}
+		else if (ps->b->head->next->bn > pivot[0])
+		{
+			pa(ps, 1);
+			if (ps->b->head->next->bn <= pivot[0] && length)
+			{
+				length--;
+				rr(ps, 1);
+				count[0]++;
+			}
+			else
+				ra(ps ,1);
+			count[1]++;
+		}
+		else
+		{
+			rb(ps, 1);
+			count[0]++;
+		}
+	}
+}
+
+void	ps_sort_a(t_pushswap *ps, int len)
+{
+	if (len == 2 && is_sorted(ps->a, 2) == -1)
+		sa(ps, 1);
+	if (len == 3 && is_sorted(ps->a, 3) == -1)
+	{
+		if (ps->a->head->next->bn > ps->a->head->next->next->bn)
+			sa(ps, 1);
+		if (is_sorted(ps->a, 3) == -1)
+		{
+			ra(ps, 1);
+			sa(ps, 1);
+			rra(ps, 1);
+		}
+		if (is_sorted(ps->a, 3) == -1)
+			sa(ps, 1);
+	}
+}
+
+void	ps_sort_b(t_pushswap *ps, int len)
+{
+	if (len == 1)
+		pa(ps ,1);
+	else if (len == 2)
+	{
+		if (rev_is_sorted(ps->b, 2) == -1)
+			sb(ps, 1);
 		pa(ps, 1);
-	quick_a(ps);
+		pa(ps, 1);
+	}
+	else if (len == 3)
+	{
+		if (ps->b->head->next->bn < ps->b->head->next->next->bn)
+			sb(ps, 1);
+		pa(ps, 1);
+		if (ps->b->head->next->bn < ps->b->head->next->next->bn)
+			sb(ps, 1);
+		pa(ps, 1);
+		if (ps->a->head->next->bn > ps->a->head->next->next->bn)
+			sa(ps, 1);
+		pa(ps, 1);
+	}
+}
+
+void	quick_a(t_pushswap *ps, int length)
+{
+	int	pivot[2];
+	int	count[3];
+
+	if (length <= 3)
+	{
+		ps_sort_a(ps, length);
+		return ;
+	}
+	cal_pivot(ps->a, length, pivot);
+	shift_a_to_b(ps, length, count, pivot);
+	rev_rotate_all(ps, count[2], count[1]);
+	quick_a(ps, count[2]);
+	quick_b(ps, count[1]);
+	quick_b(ps, count[0]);
+}
+
+void	quick_b(t_pushswap *ps, int length)
+{
+	int	pivot[2];
+	int	count[3];
+
+	if (length <= 3)
+		return (ps_sort_b(ps, length));
+	cal_pivot(ps->b, length, pivot);
+	shift_b_to_a(ps, length, count, pivot);
+	quick_a(ps, count[2]);
+	rev_rotate_all(ps, count[1], count[0]);
+	quick_a(ps, count[1]);
+	quick_b(ps, count[0]);
 }

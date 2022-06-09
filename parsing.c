@@ -6,25 +6,16 @@
 /*   By: iha <iha@student.42.kr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 10:47:30 by iha               #+#    #+#             */
-/*   Updated: 2022/02/19 23:11:43 by iha              ###   ########.fr       */
+/*   Updated: 2022/06/09 13:37:27 by iha              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-static int	set_binary(t_pushswap *ps, t_node **list, int size)
+static int	set_binary(t_node **list, int size)
 {
 	int	count;
-	int	temp;
 
-	count = 0;
-	temp = size;
-	while (temp > 0)
-	{
-		temp /= 2;
-		count++;
-	}
-	ps->length = count;
 	count = 0;
 	while (++count < size)
 	{
@@ -101,7 +92,7 @@ static int	binary_parsing(t_pushswap *ps, t_node **list)
 		cur = cur->next;
 	}
 	sort(list, ps->size);
-	if (set_binary(ps, list, ps->size) == -1)
+	if (set_binary(list, ps->size) == -1)
 	{
 		free(list);
 		return (-1);
@@ -122,6 +113,11 @@ int	parsing(t_pushswap *ps, int argc, char **argv)
 		sp = ft_split(argv[ptr++], ' ');
 		if (sp == NULL)
 			return (-1);
+		if (sp[0] == NULL)
+		{
+			free_split(sp);
+			return (-1);
+		}
 		if (set_node(ps, sp) == -1)
 			return (-1);
 		free_split(sp);

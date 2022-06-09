@@ -6,7 +6,7 @@
 /*   By: iha <iha@student.42.kr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 10:47:45 by iha               #+#    #+#             */
-/*   Updated: 2022/02/17 10:48:16 by iha              ###   ########.fr       */
+/*   Updated: 2022/06/08 05:40:41 by iha              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,6 @@ t_pushswap	*new_pushswap(void)
 		return (NULL);
 	pushswap->size = 0;
 	pushswap->count = 0;
-	pushswap->length = 0;
+	pushswap->outlier = 0;
 	return (pushswap);
 }
