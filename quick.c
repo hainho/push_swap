@@ -6,13 +6,13 @@
 /*   By: iha <iha@student.42.kr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 04:40:51 by iha               #+#    #+#             */
-/*   Updated: 2022/06/09 15:30:05 by iha              ###   ########.fr       */
+/*   Updated: 2022/06/09 18:38:16 by iha              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-static void	cal_pivot(t_deque *dq, int length, int pivot[2])
+static void	cal_pivot(t_deque *dq, int len, int pivot[2])
 {
 	t_node	*cur_node;
 	int		min_bn;
@@ -21,7 +21,7 @@ static void	cal_pivot(t_deque *dq, int length, int pivot[2])
 	min_bn = dq->head->next->bn;
 	max_bn = min_bn;
 	cur_node = dq->head->next->next;
-	while (length-- > 1 && cur_node)
+	while (len-- > 1 && cur_node)
 	{
 		if (min_bn > cur_node->bn)
 			min_bn = cur_node->bn;
@@ -33,7 +33,7 @@ static void	cal_pivot(t_deque *dq, int length, int pivot[2])
 	pivot[1] = (max_bn - min_bn) / 3 * 2 + min_bn;
 }
 
-void	rev_rotate_all(t_pushswap *ps, int left, int right)
+static void	rev_rotate_all(t_pushswap *ps, int left, int right)
 {
 	while (left > 0 || right > 0)
 	{
@@ -48,33 +48,30 @@ void	rev_rotate_all(t_pushswap *ps, int left, int right)
 	}
 }
 
-void	quick_a(t_pushswap *ps, int length)
+void	quick_a(t_pushswap *ps, int len)
 {
 	int	pivot[2];
 	int	count[3];
 
-	if (length <= 3)
-	{
-		ps_sort_a(ps, length);
-		return ;
-	}
-	cal_pivot(ps->a, length, pivot);
-	shift_a_to_b(ps, length, count, pivot);
+	if (len <= 3)
+		return (ps_sort_a(ps, len));
+	cal_pivot(ps->a, len, pivot);
+	shift_a_to_b(ps, len, count, pivot);
 	rev_rotate_all(ps, count[2], count[1]);
 	quick_a(ps, count[2]);
 	quick_b(ps, count[1]);
 	quick_b(ps, count[0]);
 }
 
-void	quick_b(t_pushswap *ps, int length)
+void	quick_b(t_pushswap *ps, int len)
 {
 	int	pivot[2];
 	int	count[3];
 
-	if (length <= 3)
-		return (ps_sort_b(ps, length));
-	cal_pivot(ps->b, length, pivot);
-	shift_b_to_a(ps, length, count, pivot);
+	if (len <= 3)
+		return (ps_sort_b(ps, len));
+	cal_pivot(ps->b, len, pivot);
+	shift_b_to_a(ps, len, count, pivot);
 	quick_a(ps, count[2]);
 	rev_rotate_all(ps, count[1], count[0]);
 	quick_a(ps, count[1]);

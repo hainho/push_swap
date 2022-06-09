@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pushswap.h"
+#include "pushswap_bonus.h"
 
 char	*ft_strjoin(char *str1, char *str2)
 {

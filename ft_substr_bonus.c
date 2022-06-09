@@ -1,38 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pushswap.c                                         :+:      :+:    :+:   */
+/*   ft_substr_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iha <iha@student.42.kr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/17 10:47:45 by iha               #+#    #+#             */
-/*   Updated: 2022/06/09 18:05:03 by iha              ###   ########.fr       */
+/*   Created: 2022/02/17 10:46:47 by iha               #+#    #+#             */
+/*   Updated: 2022/06/09 18:55:31 by iha              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pushswap.h"
+#include "pushswap_bonus.h"
 
-t_pushswap	*new_pushswap(void)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	t_pushswap	*pushswap;
+	char	*dst;
+	size_t	size;
 
-	pushswap = malloc(sizeof(t_pushswap));
-	if (pushswap == NULL)
+	if (s == NULL)
 		return (NULL);
-	pushswap->a = new_deque();
-	if (pushswap->a == NULL)
+	while (*s && start)
 	{
-		free_pushswap(pushswap);
-		return (NULL);
+		s++;
+		start--;
 	}
-	pushswap->b = new_deque();
-	if (pushswap->b == NULL)
-	{
-		free_pushswap(pushswap);
+	if (*s == 0)
+		return (ft_strdup(""));
+	size = ft_strlen(s);
+	if (len > size)
+		len = size;
+	dst = (char *)malloc((len + 1) * sizeof(char));
+	if (dst == NULL)
 		return (NULL);
-	}
-	pushswap->size = 0;
-	pushswap->count = 0;
-	pushswap->outlier = 0;
-	return (pushswap);
+	ft_strlcpy(dst, s, len + 1);
+	return (dst);
 }

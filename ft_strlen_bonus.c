@@ -1,39 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker.c                                          :+:      :+:    :+:   */
+/*   ft_strlen_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iha <iha@student.42.kr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/06 04:42:09 by iha               #+#    #+#             */
-/*   Updated: 2022/06/06 07:07:43 by iha              ###   ########.fr       */
+/*   Created: 2022/02/17 10:47:16 by iha               #+#    #+#             */
+/*   Updated: 2022/06/09 18:55:47 by iha              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pushswap.h"
+#include "pushswap_bonus.h"
 
-int	main(int argc, char **argv)
+size_t	ft_strlen(const char *s)
 {
-	t_pushswap	*ps;
-	int			rt;
+	size_t	len;
 
-	if (argc == 1)
-		return (0);
-	ps = new_pushswap();
-	if (ps == NULL)
-		return (-1);
-	if (parsing(ps, argc, argv) == -1)
-	{
-		write(2, "Error\n", 6);
-		return (free_pushswap(ps));
-	}
-	rt = 0;
-	while (rt == 0)
-		rt = run_cmd(ps);
-	if (rt == 1)
-		ok_check(ps);
-	else
-		write(2, "Error\n", 6);
-	free_pushswap(ps);
-	return (0);
+	len = 0;
+	while (*s++ != 0)
+		len++;
+	return (len);
 }

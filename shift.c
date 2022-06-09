@@ -6,7 +6,7 @@
 /*   By: iha <iha@student.42.kr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 15:27:39 by iha               #+#    #+#             */
-/*   Updated: 2022/06/09 15:45:43 by iha              ###   ########.fr       */
+/*   Updated: 2022/06/09 18:38:05 by iha              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ void	shift_b_to_a(t_pushswap *ps, int len, int count[3], int pivot[2])
 			count[2]++;
 		}
 		else if (ps->b->head->next->bn > pivot[0])
-			shift_b_mid(ps, len, count, pivot);
+			len = shift_b_mid(ps, len, count, pivot);
 		else
 		{
 			rb(ps, 1);

@@ -1,22 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pushswap.h                                         :+:      :+:    :+:   */
+/*   pushswap_bonus.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iha <iha@student.42.kr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 10:47:03 by iha               #+#    #+#             */
-/*   Updated: 2022/06/09 19:09:53 by iha              ###   ########.fr       */
+/*   Updated: 2022/06/09 19:10:59 by iha              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSHSWAP_H
-# define PUSHSWAP_H
+#ifndef PUSHSWAP_BONUS_H
+# define PUSHSWAP_BONUS_H
 
 # include <unistd.h>
 # include <stdlib.h>
 # include <limits.h>
 # include <stdio.h>
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE   5000
+# endif
+
+# ifndef OPEN_MAX
+#  define OPEN_MAX      32
+# endif
 
 typedef struct s_node
 {
@@ -76,7 +84,6 @@ int			parsing(t_pushswap *ps, int argc, char **argv);
 void		three_sort_all(t_pushswap *ps, int base);
 void		five_sort_all(t_pushswap *ps);
 int			is_sorted(t_deque *dq, int len);
-int			rev_is_sorted(t_deque *dq, int len);
 
 long long	ft_atoi(const char *str);
 char		**ft_split(char const *s, char c);
@@ -88,18 +95,15 @@ void		*ft_calloc(size_t count, size_t size);
 void		ft_bzero(void *s, size_t n);
 void		*ft_memset(void *b, int c, size_t len);
 void		*ft_memcpy(void *dst, const void *src, size_t n);
+char		*ft_strjoin(char *str1, char *str2);
+int			ft_strncmp(const char *s1, const char *s2, size_t n);
 
 int			free_pushswap(t_pushswap *ps);
 void		free_deque(t_deque *dq);
 int			free_split(char **sp);
 
-void		quick_a(t_pushswap *ps, int target);
-void		quick_b(t_pushswap *ps, int target);
-
-void		shift_a_to_b(t_pushswap *ps, int len, int count[3], int pivot[2]);
-void		shift_b_to_a(t_pushswap *ps, int len, int count[3], int pivot[2]);
-
-void		ps_sort_a(t_pushswap *ps, int len);
-void		ps_sort_b(t_pushswap *ps, int len);
+char		*get_next_line(int fd);
+int			run_cmd(t_pushswap *ps);
+void		ok_check(t_pushswap *ps);
 
 #endif

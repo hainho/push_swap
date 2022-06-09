@@ -1,25 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   check_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iha <iha@student.42.kr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/06 04:41:32 by iha               #+#    #+#             */
-/*   Updated: 2022/06/06 04:47:56 by iha              ###   ########.fr       */
+/*   Created: 2022/06/06 04:42:14 by iha               #+#    #+#             */
+/*   Updated: 2022/06/09 18:57:13 by iha              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pushswap.h"
+#include "pushswap_bonus.h"
 
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
+void	ok_check(t_pushswap *ps)
 {
-	if (n == 0)
-		return (0);
-	while (*s1 == *s2 && --n && *s1 && *s2)
-	{
-		s1++;
-		s2++;
-	}
-	return ((unsigned char)*s1 - (unsigned char)*s2);
+	if (ps->b->length > 0)
+		write(1, "KO\n", 3);
+	else if (is_sorted(ps->a, ps->size) == 0)
+		write(1, "OK\n", 3);
+	else
+		write(1, "KO\n", 3);
 }
