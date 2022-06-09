@@ -6,7 +6,7 @@
 /*   By: iha <iha@student.42.kr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 04:40:51 by iha               #+#    #+#             */
-/*   Updated: 2022/06/09 13:59:11 by iha              ###   ########.fr       */
+/*   Updated: 2022/06/09 15:30:05 by iha              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,116 +45,6 @@ void	rev_rotate_all(t_pushswap *ps, int left, int right)
 			rrb(ps, 1);
 		left--;
 		right--;
-	}
-}
-
-void	shift_a_to_b(t_pushswap *ps, int length, int count[3], int pivot[2])
-{
-	count[0] = 0;
-	count[1] = 0;
-	count[2] = 0;
-	while (length--)
-	{
-		if (ps->a->head->next->bn <= pivot[0])
-		{
-			pb(ps, 1);
-			count[0]++;
-		}
-		else if (ps->a->head->next->bn <= pivot[1])
-		{
-			pb(ps, 1);
-			if (ps->a->head->next->bn > pivot[1] && length)
-			{
-				length--;
-				rr(ps, 1);
-				count[2]++;
-			}
-			else
-				rb(ps ,1);
-			count[1]++;
-		}
-		else
-		{
-			ra(ps, 1);
-			count[2]++;
-		}
-	}
-}
-
-void	shift_b_to_a(t_pushswap *ps, int length, int count[3], int pivot[2])
-{
-	count[0] = 0;
-	count[1] = 0;
-	count[2] = 0;
-	while (length--)
-	{
-		if (ps->b->head->next->bn > pivot[1])
-		{
-			pa(ps, 1);
-			count[2]++;
-		}
-		else if (ps->b->head->next->bn > pivot[0])
-		{
-			pa(ps, 1);
-			if (ps->b->head->next->bn <= pivot[0] && length)
-			{
-				length--;
-				rr(ps, 1);
-				count[0]++;
-			}
-			else
-				ra(ps ,1);
-			count[1]++;
-		}
-		else
-		{
-			rb(ps, 1);
-			count[0]++;
-		}
-	}
-}
-
-void	ps_sort_a(t_pushswap *ps, int len)
-{
-	if (len == 2 && is_sorted(ps->a, 2) == -1)
-		sa(ps, 1);
-	if (len == 3 && is_sorted(ps->a, 3) == -1)
-	{
-		if (ps->a->head->next->bn > ps->a->head->next->next->bn)
-			sa(ps, 1);
-		if (is_sorted(ps->a, 3) == -1)
-		{
-			ra(ps, 1);
-			sa(ps, 1);
-			rra(ps, 1);
-		}
-		if (is_sorted(ps->a, 3) == -1)
-			sa(ps, 1);
-	}
-}
-
-void	ps_sort_b(t_pushswap *ps, int len)
-{
-	if (len == 1)
-		pa(ps ,1);
-	else if (len == 2)
-	{
-		if (rev_is_sorted(ps->b, 2) == -1)
-			sb(ps, 1);
-		pa(ps, 1);
-		pa(ps, 1);
-	}
-	else if (len == 3)
-	{
-		if (ps->b->head->next->bn < ps->b->head->next->next->bn)
-			sb(ps, 1);
-		pa(ps, 1);
-		if (ps->b->head->next->bn < ps->b->head->next->next->bn)
-			sb(ps, 1);
-		pa(ps, 1);
-		if (ps->a->head->next->bn > ps->a->head->next->next->bn)
-			sa(ps, 1);
-		pa(ps, 1);
 	}
 }
 
